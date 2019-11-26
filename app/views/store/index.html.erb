@@ -1,0 +1,16 @@
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
+
+<h1>Tutor Listings Galway</h1>
+
+<ul class="catalog">
+  <% @tutors.each do |tutor| %>
+    <li>
+      <%= image_tag(tutor.image_url,size: "200x150") %>
+      <h2><%= tutor.name %></h2>
+      <p><%= sanitize tutor.about %></p>
+      <div class="price"><%= number_to_currency(tutor.price) %></div>
+    </li>
+  <% end %>
+</ul>
