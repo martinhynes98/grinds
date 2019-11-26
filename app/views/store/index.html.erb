@@ -10,7 +10,7 @@
       <%= image_tag(tutor.image_url,size: "200x150") %>
       <h2><%= tutor.name %></h2>
       <p><%= sanitize tutor.about %></p>
-      <div class="price"><%= number_to_currency(tutor.price) %></div>
+      <div class="price"><%= number_to_currency(tutor.price) %><%= button_to 'Add to Your List', line_items_path(tutor_id: tutor) %></div>
     </li>
   <% end %>
 </ul>
