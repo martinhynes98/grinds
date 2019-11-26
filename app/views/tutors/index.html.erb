@@ -1,0 +1,40 @@
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
+
+<h1>Tutors</h1>
+
+<table>
+
+  <tbody>
+    <% @tutors.each do |tutor| %>
+      <%= content_tag :tr, class: cycle('list_line_odd', 'list_line_even') do %>
+		<td>
+		  <%= image_tag(tutor.image_url, class: 'list_image', width: 400, height: 250) %>
+		</td>
+		<td class='list_description'>
+		  <dl>
+            <dt><%= "Name: "%><%= tutor.name %></dt>
+            <dt><%= "Subject: "%><%= tutor.subject %></dt>
+            <dt><%= "Hourly Price: "%><%= tutor.price %></dt>
+            <dd>
+			  <%= truncate strip_tags(tutor.about), length: 240 %>
+			</dd>
+		
+		
+		    
+		  </dl>
+		</td>
+		<td class='list_actions'>
+          <td><%= link_to 'Show', tutor %></td>
+          <td><%= link_to 'Edit', edit_tutor_path(tutor) %></td>
+          <td><%= link_to 'Destroy', tutor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</td>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tutor', new_tutor_path %>
