@@ -1,4 +1,6 @@
 class Tutor < ApplicationRecord
+  before_destroy :ensure_not_referenced_by_any_line_item
+  has_many :line_items
 
   validates :name, :about, :image_url, :subject, :price, :username, presence: true
   validates :username, uniqueness: true
@@ -17,4 +19,13 @@ class Tutor < ApplicationRecord
 	"German" => 5,
 	"French" => 6
   }
+  private
+
+    # ensure that there are no line items referencing this product
+  def ensure_not_referenced_by_any_line_item
+    unless line_items.empty?
+      errors.add(:base, 'Line Items present')
+      throw :abort
+    end
+  end
 end
