@@ -2,15 +2,20 @@
   <aside id="notice"><%= notice %></aside>
 <% end %>
 
-<h1>Tutor Listings Galway</h1>
+<h1><center>Tutor Listings Galway</center></h1>
 
 <ul class="catalog">
   <% @tutors.each do |tutor| %>
-    <li>
-      <%= image_tag(tutor.image_url,size: "200x150") %>
-      <h2><%= tutor.name %></h2>
-      <p><%= sanitize tutor.about %></p>
-      <div class="price"><%= number_to_currency(tutor.price) %><%= button_to 'Add to Your List', line_items_path(tutor_id: tutor) %></div>
-    </li>
+    
+      
+	  <center>
+	    <%= image_tag(tutor.image_url,size: "200x150") %>
+		<li>
+		  <h2><%= tutor.name %></h2>
+		  <p><%= sanitize tutor.about %></p>
+		  <div class="price"><%= number_to_currency(tutor.price) %><%= button_to 'Add to Your List', line_items_path(tutor_id: tutor) %></div>
+		</li>
+	  </center>
+    
   <% end %>
 </ul>
